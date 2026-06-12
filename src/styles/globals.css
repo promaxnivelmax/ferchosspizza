@@ -1,0 +1,275 @@
+/* ══════════════════════════════════════════════════════════════
+   FERCHOS POS — Estilos globales
+   Archivo: src/styles/globals.css
+══════════════════════════════════════════════════════════════ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Design Tokens — Dark Mode (default) ─────────────────────*/
+:root {
+  --font-inter:  'Inter', system-ui, sans-serif;
+  --font-space:  'Space Grotesk', system-ui, sans-serif;
+
+  /* Superficies */
+  --bg-base:       #08080d;
+  --bg-surface:    #111118;
+  --bg-elevated:   #18181f;
+  --bg-hover:      #1f1f28;
+  --bg-border:     #26262f;
+  --bg-border-2:   #303040;
+
+  /* Superficies (alias Tailwind) */
+  --surface-base:     var(--bg-surface);
+  --surface-elevated: var(--bg-elevated);
+  --surface-hover:    var(--bg-hover);
+
+  /* Marca FERCHOS */
+  --brand:         #f97316;
+  --brand-dim:     rgba(249,115,22,0.10);
+  --brand-glow:    rgba(249,115,22,0.28);
+  --brand-hover:   #ea6c0c;
+
+  /* Semáforos */
+  --green:         #22c55e;
+  --green-dim:     rgba(34,197,94,0.10);
+  --yellow:        #eab308;
+  --yellow-dim:    rgba(234,179,8,0.10);
+  --red:           #ef4444;
+  --red-dim:       rgba(239,68,68,0.10);
+  --blue:          #3b82f6;
+  --blue-dim:      rgba(59,130,246,0.10);
+  --purple:        #a855f7;
+  --purple-dim:    rgba(168,85,247,0.10);
+
+  /* Texto */
+  --text-primary:   #f0f0f8;
+  --text-secondary: #9292b0;
+  --text-muted:     #55556a;
+
+  /* Radios */
+  --r-sm:  6px;
+  --r-md:  10px;
+  --r-lg:  14px;
+  --r-xl:  20px;
+
+  /* Sidebar */
+  --sidebar-w:    240px;
+  --header-h:     60px;
+
+  /* Sombras */
+  --shadow-sm:  0 1px 3px rgba(0,0,0,.6);
+  --shadow-md:  0 4px 16px rgba(0,0,0,.55);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,.6);
+}
+
+/* ── Design Tokens — Light Mode ──────────────────────────────*/
+.light {
+  --bg-base:       #f2f2f8;
+  --bg-surface:    #ffffff;
+  --bg-elevated:   #f8f8fc;
+  --bg-hover:      #eeeef6;
+  --bg-border:     #e0e0ee;
+  --bg-border-2:   #d0d0e0;
+  --surface-base:     var(--bg-surface);
+  --surface-elevated: var(--bg-elevated);
+  --surface-hover:    var(--bg-hover);
+  --text-primary:   #12121e;
+  --text-secondary: #55556a;
+  --text-muted:     #aaaacc;
+}
+
+/* ── Reset base ───────────────────────────────────────────────*/
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-family: var(--font-inter);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeSpeed;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg-base);
+}
+
+/* ── Scrollbar personalizada ─────────────────────────────────*/
+::-webkit-scrollbar       { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--bg-border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: var(--bg-border-2); }
+
+/* ── Selección de texto ──────────────────────────────────────*/
+::selection { background: var(--brand-dim); color: var(--brand); }
+
+/* ── Inputs globales ─────────────────────────────────────────*/
+input, select, textarea {
+  font-family: var(--font-inter);
+  color: var(--text-primary);
+  background: var(--bg-elevated);
+  border: 1px solid var(--bg-border);
+  border-radius: var(--r-sm);
+  outline: none;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+input:focus, select:focus, textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px var(--brand-dim);
+}
+input::placeholder, textarea::placeholder { color: var(--text-muted); }
+
+/* ── Focus visible ───────────────────────────────────────────*/
+*:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 2px;
+  border-radius: var(--r-sm);
+}
+
+/* ── Componentes utilitarios ─────────────────────────────────*/
+@layer components {
+  /* Tarjeta base */
+  .card {
+    @apply rounded-xl border;
+    background: var(--bg-surface);
+    border-color: var(--bg-border);
+  }
+
+  /* Botón primario */
+  .btn-brand {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm text-white transition-all duration-150 select-none cursor-pointer;
+    background: var(--brand);
+  }
+  .btn-brand:hover {
+    background: var(--brand-hover);
+    box-shadow: 0 0 20px var(--brand-glow);
+  }
+  .btn-brand:active { transform: scale(0.98); }
+
+  /* Botón secundario */
+  .btn-secondary {
+    @apply inline-flex items-center gap-2 px-4 py-2 rounded-lg font-medium text-sm transition-all duration-150 cursor-pointer;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--bg-border);
+  }
+  .btn-secondary:hover { background: var(--bg-hover); }
+
+  /* Input base */
+  .input-base {
+    @apply w-full px-3 py-2 text-sm rounded-lg;
+    background: var(--bg-elevated);
+    border: 1px solid var(--bg-border);
+    color: var(--text-primary);
+  }
+
+  /* Badge */
+  .badge {
+    @apply inline-flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full;
+  }
+  .badge-green  { background: var(--green-dim);  color: var(--green);  }
+  .badge-red    { background: var(--red-dim);    color: var(--red);    }
+  .badge-yellow { background: var(--yellow-dim); color: var(--yellow); }
+  .badge-blue   { background: var(--blue-dim);   color: var(--blue);   }
+  .badge-purple { background: var(--purple-dim); color: var(--purple); }
+  .badge-brand  { background: var(--brand-dim);  color: var(--brand);  }
+
+  /* Estadística card */
+  .stat-card {
+    @apply relative overflow-hidden rounded-xl p-5 border;
+    background: var(--bg-surface);
+    border-color: var(--bg-border);
+    transition: border-color 0.2s;
+  }
+  .stat-card:hover { border-color: var(--bg-border-2); }
+
+  /* Sidebar item */
+  .nav-item {
+    @apply flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm font-medium cursor-pointer select-none transition-all duration-150;
+    color: var(--text-secondary);
+  }
+  .nav-item:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+  }
+  .nav-item.active {
+    background: var(--brand-dim);
+    color: var(--brand);
+    border: 1px solid rgba(249,115,22,0.2);
+  }
+
+  /* Table base */
+  .table-base th {
+    @apply text-xs font-semibold uppercase tracking-wide px-3 py-2.5;
+    color: var(--text-muted);
+    border-bottom: 1px solid var(--bg-border);
+    white-space: nowrap;
+  }
+  .table-base td {
+    @apply px-3 py-3 text-sm;
+    border-bottom: 1px solid var(--bg-border);
+    vertical-align: middle;
+  }
+  .table-base tr:last-child td { border-bottom: none; }
+  .table-base tbody tr { transition: background 0.1s; }
+  .table-base tbody tr:hover { background: var(--bg-hover); }
+
+  /* Modal overlay */
+  .modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+  }
+  .modal-box {
+    @apply w-full max-w-lg rounded-2xl overflow-hidden;
+    background: var(--bg-surface);
+    border: 1px solid var(--bg-border);
+    box-shadow: var(--shadow-lg);
+    animation: slideUp 0.2s ease-out;
+  }
+}
+
+/* ── Animaciones globales ─────────────────────────────────────*/
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.3; }
+}
+@keyframes pulseRing {
+  0%   { box-shadow: 0 0 0 0 var(--brand-glow); }
+  70%  { box-shadow: 0 0 0 8px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+/* ── Transiciones de página ──────────────────────────────────*/
+.page-enter {
+  animation: fadeIn 0.2s ease-out;
+}
+
+/* ── Print ────────────────────────────────────────────────────*/
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; color: black; }
+}
+
+/* ── Responsive helpers ──────────────────────────────────────*/
+@media (max-width: 640px) {
+  :root {
+    --header-h: 56px;
+    --sidebar-w: 100%;
+  }
+}
