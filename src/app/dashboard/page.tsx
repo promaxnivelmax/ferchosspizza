@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Dashboard ejecutivo (solo admin)
 // Archivo: src/app/dashboard/page.tsx

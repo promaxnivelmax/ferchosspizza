@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Caja
 // Archivo: src/app/cashbox/page.tsx

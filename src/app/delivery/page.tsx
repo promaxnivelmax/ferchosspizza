@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Domicilios
 // Archivo: src/app/delivery/page.tsx

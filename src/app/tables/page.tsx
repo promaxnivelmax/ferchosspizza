@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Mapa de Mesas
 // Archivo: src/app/tables/page.tsx

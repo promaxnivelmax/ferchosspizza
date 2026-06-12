@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Inventario
 // Archivo: src/app/inventory/page.tsx

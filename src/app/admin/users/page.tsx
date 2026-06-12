@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Admin: Gestión de usuarios
 // Archivo: src/app/admin/users/page.tsx

@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic';
+
 // ══════════════════════════════════════════════════════════════
 // FERCHOS POS — Panel de Cocina (tiempo real)
 // Archivo: src/app/kitchen/page.tsx
